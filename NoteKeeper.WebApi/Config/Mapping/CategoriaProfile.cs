@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using NoteKeeper.Dominio.ModuloCategoria;
-using NoteKeeper.Dominio.ModuloNota;
 using NoteKeeper.WebApi.ViewModels;
 
 namespace NoteKeeper.WebApi.Config.Mapping;
@@ -14,7 +13,5 @@ public class CategoriaProfile : Profile
 
 		CreateMap<Categoria, ListarCategoriaViewModel>();
 		CreateMap<Categoria, VisualizarCategoriaViewModel>();
-
-		CreateMap<Nota, ListarNotaViewModel>();
 	}
 }

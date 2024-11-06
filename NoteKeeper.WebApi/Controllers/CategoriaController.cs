@@ -7,17 +7,8 @@ using NoteKeeper.WebApi.ViewModels;
 namespace NoteKeeper.WebApi.Controllers;
 [Route("api/categorias")]
 [ApiController]
-public class CategoriaController : ControllerBase
+public class CategoriaController(ServicoCategoria servicoCategoria, IMapper mapeador) : ControllerBase
 {
-	private readonly ServicoCategoria servicoCategoria;
-	private IMapper mapeador;
-
-	public CategoriaController(ServicoCategoria servicoCategoria, IMapper mapeador)
-	{
-		this.servicoCategoria = servicoCategoria;
-		this.mapeador = mapeador;
-	}
-
 	[HttpGet]
 	public async Task<IActionResult> Get()
 	{
