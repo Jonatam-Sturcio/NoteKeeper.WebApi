@@ -2,17 +2,26 @@
 
 public class InserirCategoriaViewModel
 {
-	public string Titulo { get; set; }
+	public required string Titulo { get; set; }
 }
 
 public class EditarCategoriaViewModel
 {
-	public string Titulo { get; set; }
+	public required string Titulo { get; set; }
 }
 
 public class ListarCategoriaViewModel
 {
-	public Guid Id { get; set; }
+	public required Guid Id { get; set; }
 
-	public string Titulo { get; set; }
+	public required string Titulo { get; set; }
+}
+
+public class VisualizarCategoriaViewModel
+{
+	public required Guid Id { get; set; }
+
+	public required string Titulo { get; set; }
+
+	public required List<ListarNotaViewModel> Notas { get; set; }
 }
