@@ -2,23 +2,27 @@
 
 public class ListarNotaViewModel
 {
-	public required Guid Id { get; set; }
-	public required string Titulo { get; set; }
+	public Guid Id { get; set; }
+	public string Titulo { get; set; }
+	public bool Arquivada { get; set; }
+	public ListarCategoriaViewModel Categoria { get; set; }
 }
+
 public class VisualizarNotaViewModel
 {
-	public required string Titulo { get; set; }
-	public required string Conteudo { get; set; }
-	public required bool Arquivada { get; set; }
-	public required ListarCategoriaViewModel Categoria { get; set; }
+	public Guid Id { get; set; }
+	public string Titulo { get; set; }
+	public string Conteudo { get; set; }
+	public bool Arquivada { get; set; }
+	public ListarCategoriaViewModel Categoria { get; set; }
 }
 
 public class FormsNotaViewModel
 {
-	public required string Titulo { get; set; }
-	public required string Conteudo { get; set; }
-	public required bool Arquivada { get; set; }
-	public required Guid CategoriaId { get; set; }
+	public string Titulo { get; set; }
+	public string Conteudo { get; set; }
+	public bool Arquivada { get; set; }
+	public Guid CategoriaId { get; set; }
 }
 
 public class InserirNotaViewModel : FormsNotaViewModel
