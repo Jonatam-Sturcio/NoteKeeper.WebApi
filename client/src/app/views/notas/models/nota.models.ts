@@ -1,53 +1,52 @@
-import { ListagemCategoria } from '../../categorias/models/categoria.models';
+import { ListarCategoriaViewModel } from "../../categorias/models/categoria.models";
 
-export interface CadastroNota {
+export interface InserirNotaViewModel {
   titulo: string;
   conteudo: string;
-
-  categoriaId: number;
-}
-
-export interface NotaCriada {
-  id: number;
-  titulo: string;
-  conteudo: string;
-
-  categoriaId: number;
-}
-
-export interface EdicaoNota {
-  titulo: string;
-  conteudo: string;
-
-  categoriaId: number;
-}
-
-export interface NotaEditada {
-  id: number;
-  titulo: string;
-  conteudo: string;
-
-  categoriaId: number;
-}
-
-export interface ListagemNota {
-  id: number;
-  titulo: string;
-  conteudo: string;
-
   arquivada: boolean;
 
-  categoriaId: number;
-  categoria?: ListagemCategoria;
+  categoriaId: string;
 }
 
-export interface DetalhesNota {
-  id: number;
+export interface NotaInseridaViewModel {
   titulo: string;
   conteudo: string;
+  arquivada: boolean;
 
-  categoriaId: number;
-  categoria?: ListagemCategoria;
+  categoriaId: string;
 }
 
-export interface NotaExcluida {}
+export interface EditarNotaViewModel {
+  titulo: string;
+  conteudo: string;
+  arquivada: boolean;
+
+  categoriaId: string;
+}
+
+export interface NotaEditadaViewModel {
+  titulo: string;
+  conteudo: string;
+  arquivada: boolean;
+
+  categoriaId: string;
+}
+
+export interface ListarNotaViewModel {
+  id: string;
+  titulo: string;
+  arquivada: boolean;
+
+  categoria: ListarCategoriaViewModel;
+}
+
+export interface VisualizarNotaViewModel {
+  id: string;
+  titulo: string;
+  conteudo: string;
+  arquivada: boolean;
+
+  categoria: ListarCategoriaViewModel;
+}
+
+export interface NotaExcluidaViewModel {}
