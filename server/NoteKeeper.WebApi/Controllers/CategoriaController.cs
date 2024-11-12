@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NoteKeeper.Aplicacao.ModuloCategoria;
 using NoteKeeper.Dominio.ModuloCategoria;
 using NoteKeeper.WebApi.ViewModels;
+using Serilog;
 
 namespace NoteKeeper.WebApi.Controllers;
 
