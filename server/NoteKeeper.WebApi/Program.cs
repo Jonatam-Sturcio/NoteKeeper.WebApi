@@ -68,7 +68,8 @@ public class Program
 
 		builder.Services.AddSwaggerGen();
 
-		builder.Services.ConfigureSerilog(builder.Logging);
+		var key = builder.Configuration["SERILOG_LICENSE_KEY"];
+		builder.Services.ConfigureSerilog(builder.Logging, key);
 
 		//Execução da API
 		var app = builder.Build();
