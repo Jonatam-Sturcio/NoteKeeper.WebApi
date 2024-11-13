@@ -30,6 +30,8 @@ public class Program
 
 		builder.Services.ConfigureIdentity();
 
+		builder.Services.ConfigureJwt(builder.Configuration);
+
 		var app = builder.Build();
 
 		app.UseGlobalExceptionHandler();
