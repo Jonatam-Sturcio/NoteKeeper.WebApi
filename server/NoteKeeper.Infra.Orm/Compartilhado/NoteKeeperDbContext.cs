@@ -1,32 +1,39 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NoteKeeper.Dominio.Compartilhado;
+using NoteKeeper.Dominio.ModuloAutenticacao;
 using NoteKeeper.Dominio.ModuloCategoria;
 using NoteKeeper.Dominio.ModuloNota;
 using NoteKeeper.Infra.Orm.ModuloCategoria;
 using NoteKeeper.Infra.Orm.ModuloNota;
 
-namespace NoteKeeper.Infra.Orm.Compartilhado
+namespace NoteKeeper.Infra.Orm.Compartilhado;
+
+public class NoteKeeperDbContext : IdentityDbContext<Usuario, Cargo, Guid>, IContextoPersistencia
 {
-    public class NoteKeeperDbContext : DbContext, IContextoPersistencia
-    {
-        public NoteKeeperDbContext(DbContextOptions options) : base(options)
-        {
-        }      
+	private readonly ITenantProvider tenantProvider;
 
-        public async Task<bool> GravarAsync()
-        {
-            await SaveChangesAsync();
-            return true;
-        }
+	public NoteKeeperDbContext(DbContextOptions options, ITenantProvider tenantProvider) : base(options)
+	{
+		this.tenantProvider = tenantProvider;
+	}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new MapeadorCategoriaOrm());
+	public async Task<bool> GravarAsync()
+	{
+		await SaveChangesAsync();
+		return true;
+	}
 
-            modelBuilder.ApplyConfiguration(new MapeadorNotaOrm());
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		var usuarioId = tenantProvider.UsuarioId;
 
-            base.OnModelCreating(modelBuilder);
-        }
+		modelBuilder.ApplyConfiguration(new MapeadorCategoriaOrm());
+		modelBuilder.Entity<Categoria>().HasQueryFilter(c => c.UsuarioId == usuarioId);
 
-    }
+		modelBuilder.ApplyConfiguration(new MapeadorNotaOrm());
+		modelBuilder.Entity<Nota>().HasQueryFilter(c => c.UsuarioId == usuarioId);
+
+		base.OnModelCreating(modelBuilder);
+	}
 }

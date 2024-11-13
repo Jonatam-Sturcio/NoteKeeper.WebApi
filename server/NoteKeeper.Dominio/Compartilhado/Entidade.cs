@@ -1,4 +1,6 @@
-﻿namespace NoteKeeper.Dominio.Compartilhado;
+﻿using NoteKeeper.Dominio.ModuloAutenticacao;
+
+namespace NoteKeeper.Dominio.Compartilhado;
 
 public abstract class Entidade
 {
@@ -8,4 +10,7 @@ public abstract class Entidade
 	{
 		Id = Guid.NewGuid();
 	}
+
+	public Guid UsuarioId { get; set; }
+	public Usuario? Usuario { get; set; }
 }

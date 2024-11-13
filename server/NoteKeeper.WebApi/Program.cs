@@ -1,4 +1,5 @@
 ﻿using NoteKeeper.WebApi.Config;
+using NoteKeeper.WebApi.Identity;
 using Serilog;
 
 namespace NoteKeeper.WebApi;
@@ -26,6 +27,8 @@ public class Program
 		builder.Services.AddSwaggerGen();
 
 		builder.Services.ConfigureSerilog(builder.Logging, builder.Configuration);
+
+		builder.Services.ConfigureIdentity();
 
 		var app = builder.Build();
 
