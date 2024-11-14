@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoteKeeper.Aplicacao.ModuloNota;
 using NoteKeeper.Dominio.ModuloNota;
@@ -9,6 +10,7 @@ namespace NoteKeeper.WebApi.Controllers;
 
 [Route("api/notas")]
 [ApiController]
+[Authorize]
 public class NotaController(ServicoNota servicoNota, IMapper mapeador) : ControllerBase
 {
 	[HttpGet]

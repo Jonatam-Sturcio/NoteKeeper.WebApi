@@ -22,15 +22,13 @@ public class Program
 
 		builder.Services.ConfigureControllersWithFilters();
 
-		builder.Services.AddEndpointsApiExplorer();
-
-		builder.Services.AddSwaggerGen();
-
 		builder.Services.ConfigureSerilog(builder.Logging, builder.Configuration);
 
 		builder.Services.ConfigureIdentity();
 
 		builder.Services.ConfigureJwt(builder.Configuration);
+
+		builder.Services.ConfigureSwaggerAuthorization();
 
 		var app = builder.Build();
 

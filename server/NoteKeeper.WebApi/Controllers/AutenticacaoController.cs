@@ -54,6 +54,7 @@ public class AutenticacaoController : ControllerBase
 	}
 
 	[HttpPost("sair")]
+	[Authorize]
 	public async Task<IActionResult> Sair()
 	{
 		await servicoAutenticacao.Sair();
